@@ -1,0 +1,135 @@
+// Example program
+#include <iostream>
+#include <string>
+#include <string.h>
+
+int dotCount(std::string name)
+{
+  int i=0;
+  int counter=0;
+  
+  //std::cout<<"test " << name;
+  
+  for(i=0;i<name.length();i++)
+  {        
+      if(name[i] == '.')
+      {
+        counter++;   
+      }   
+  }
+  //std::cout<<counter;
+  return counter;
+  
+}
+int main()
+{
+  std::string name;
+  int i=0,opb=0,clb=0,j=0;
+  //char name[100];
+  std::string strcp1,strcp2;
+  
+  std::cout << "Enter input ? ";
+  std::cin >>  name; 
+  
+  std::cout << "Hello, " << name << "!\n";
+  
+  for(i=0;i<name.length();i++)
+  {
+      //std::cout <<"\n";
+      //std::cout <<name[i];   
+      
+      if(name[i] =='(')
+      {
+        opb++;   
+      }
+      if(name[i] ==')')
+      {
+        clb++;   
+      }
+      
+      if(name[i]=='.' && opb==clb)
+      {
+        std::cout <<"\n";  
+        //std::cout <<"match -center value" ;   
+        for(j=0;j<i;j++)
+        {
+            std::cout <<name[j];   
+            strcp1 = strcp1+name[j];
+        }
+        
+        std::cout <<"\n";
+        for(j=i+1;j<name.length();j++)
+        {
+            std::cout <<name[j];   
+            strcp2 = strcp2+name[j];
+        }  
+        
+        //print first part -> left
+        //std::cout <<strcp1;   
+        int counter = dotCount(strcp1);
+        if(counter==1)
+        {
+            for(j=0;j<strcp1.length();j++)
+            {               
+                
+                if(strcp1[j] !='.' && strcp1[j] !='(' && strcp1[j] != ')' )
+                {
+                    std::cout<<"\n";
+                  
+                    if(strcp1[j] =='-')
+                    {
+                        std::cout <<strcp1[j];   
+                        std::cout <<strcp1[j+1];
+                        j++;
+                    
+                    }
+                    else
+                    {
+                        std::cout <<strcp1[j];   
+                        
+                    }                    
+                }
+            }
+        }       
+        ////print 2nd part -> right
+        std::cout <<"\n \/  \\" ;
+        std::cout <<"\n" ;
+                
+        for(j=0;j<strcp2.length();j++)
+        {           
+                
+                
+                if(strcp2[j] !='.' && strcp2[j] !='(' && strcp2[j] != ')' && strcp2[j] != '<' )
+                {
+                    
+                  
+                    if(strcp2[j] =='-')
+                    {
+                        std::cout << strcp2[j];   
+                        std::cout << strcp2[j+1] << "\t";
+                        j++;
+                    
+                    }
+                    else
+                    {
+                        std::cout << strcp2[j] << "\t";   
+                        
+                    }
+                }                
+        }
+        break;
+      }     
+           
+  }  
+  
+  if(name[10] != name[12] )
+  {
+      std::cout <<  "consistent";
+  }
+  else
+  {
+      std::cout << "inconsistent";
+  }
+  
+        
+}
