@@ -1,0 +1,411 @@
+// Example program
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <sstream>
+
+std::string covert(const std::string& str, char delim)
+{
+    if (delim == ' ' || delim == '\n') return str;
+    std::string ret = str;
+    for (auto& ch : ret)
+    {
+        if (ch == delim) ch = ' ';
+    }
+    return ret;
+}
+
+
+int dotCount(std::string name)
+{
+  int i=0;
+  int counter=0;
+  
+  //std::cout<<"test " << name;
+  
+  for(i=0;i<name.length();i++)
+  {        
+      if(name[i] == '.')
+      {
+        counter++;   
+      }   
+  }
+  //std::cout<<counter;
+  return counter;
+  
+}
+int main()
+{
+  std::string name;
+  int i=0,opb=0,clb=0,j=0;
+  int previndex =0;
+  //char name[100];
+  std::string strcp1,strcp2;
+  
+  std::cout << "Enter input ? ";
+  std::cin >>  name; 
+  
+  std::cout << "Hello, " << name << "!\n";
+  
+  for(i=0;i<name.length();i++)
+  {
+      //std::cout <<"\n";
+      //std::cout <<name[i];   
+      
+      if(name[i] =='(')
+      {
+        opb++;   
+      }
+      if(name[i] ==')')
+      {
+        clb++;   
+      }
+      
+      if(name[i]=='.' && opb==clb)
+      {
+        std::cout <<"\n";  
+        //std::cout <<"match -center value" ;   
+        for(j=previndex;j<i;j++)
+        {
+            std::cout <<name[j];   
+            strcp1 = strcp1+name[j];
+        }
+        strcp1 = strcp1+";";
+        previndex = j+1;      
+        std::cout <<"\n";
+        /*
+        for(j=i+1;j<name.length();j++)
+        {
+            std::cout <<name[j];   
+            strcp2 = strcp2+name[j];
+        }  
+        
+        //print first part -> left
+        //std::cout <<strcp1;   
+        int counter = dotCount(strcp1);
+        if(counter==1)
+        {
+            for(j=0;j<strcp1.length();j++)
+            {               
+                
+                if(strcp1[j] !='.' && strcp1[j] !='(' && strcp1[j] != ')' )
+                {
+                    std::cout<<"\n";
+                  
+                    if(strcp1[j] =='-')
+                    {
+                        std::cout <<strcp1[j];   
+                        std::cout <<strcp1[j+1];
+                        j++;
+                    
+                    }
+                    else
+                    {
+                        std::cout <<strcp1[j];   
+                        
+                    }                    
+                }
+            }
+        }
+        */
+        ////print 2nd part -> right
+        //std::cout <<"\n \/  \\" ;
+        //std::cout <<"\n" ;
+        /*        
+        for(j=0;j<strcp2.length();j++)
+        {           
+                
+                
+                if(strcp2[j] !='.' && strcp2[j] !='(' && strcp2[j] != ')' && strcp2[j] != '<' )
+                {
+                    
+                  
+                    if(strcp2[j] =='-')
+                    {
+                        std::cout << strcp2[j];   
+                        std::cout << strcp2[j+1] << "\t";
+                        j++;
+                    
+                    }
+                    else
+                    {
+                        std::cout << strcp2[j] << "\t";   
+                        
+                    }
+                }                
+        }
+        break;
+        */
+      }     
+           
+  }//end of loop 
+  
+  
+    //////
+    std::stringstream sso(covert(strcp1, ';'));
+    std::string temp;
+    while (sso >> temp) {
+        
+    
+       if(temp.length()>4)
+       {
+                std::stringstream sso(covert(temp, '<'));
+                std::string temp1;            
+                i =0;
+                std::cout << '\n' << temp ;
+                std::cout <<"\n \/  \\"<< "\n" ;
+                while (sso >> temp1) {
+                
+                       if(temp1.length()>3)
+                          strcp2 = temp1;
+                        if(i==0)
+                            std::cout << "-" << temp1 << ")" << '\t';
+                        else 
+                            std::cout << temp1;
+                            
+                    i++;
+                
+                }
+                std::cout<<"\n" <<"tet";
+                if(strcp2.length()>3)
+                {
+                    
+                    std::stringstream sso(covert(strcp2, '.'));
+                    std::string temp2;            
+                    i =0;
+                    //std::cout << '\n' << temp ;
+                    std::cout <<"\n \/  \\"<< "\n" ;
+                    while (sso >> temp2) {
+                                       
+                        if(i==0)
+                            std::cout << "-" << temp2 << '\t';
+                        else 
+                            std::cout <<"-" << temp2;
+                            
+                    i++;
+                
+                    }
+                
+            }
+       }//if end 
+       /////
+        
+    }
+    
+  std::cout <<  "\n";
+  if(name[10] != name[12] )
+  {
+      std::cout <<  "consistent";
+  }
+  else
+  {
+      std::cout << "inconsistent";
+  } 
+        
+}
+
+// Example program
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <sstream>
+
+std::string covert(const std::string& str, char delim)
+{
+    if (delim == ' ' || delim == '\n') return str;
+    std::string ret = str;
+    for (auto& ch : ret)
+    {
+        if (ch == delim) ch = ' ';
+    }
+    return ret;
+}
+
+
+int dotCount(std::string name)
+{
+  int i=0;
+  int counter=0;
+  
+  //std::cout<<"test " << name;
+  
+  for(i=0;i<name.length();i++)
+  {        
+      if(name[i] == '.')
+      {
+        counter++;   
+      }   
+  }
+  //std::cout<<counter;
+  return counter;
+  
+}
+int main()
+{
+  std::string name;
+  int i=0,opb=0,clb=0,j=0;
+  int previndex =0;
+  //char name[100];
+  std::string strcp1,strcp2;
+  
+  std::cout << "Enter input ? ";
+  std::cin >>  name; 
+  
+  std::cout << "Hello, " << name << "!\n";
+  
+  for(i=0;i<name.length();i++)
+  {
+      //std::cout <<"\n";
+      //std::cout <<name[i];   
+      
+      if(name[i] =='(')
+      {
+        opb++;   
+      }
+      if(name[i] ==')')
+      {
+        clb++;   
+      }
+      
+      if(name[i]=='.' && opb==clb)
+      {
+        std::cout <<"\n";  
+        //std::cout <<"match -center value" ;   
+        for(j=previndex;j<i;j++)
+        {
+            std::cout <<name[j];   
+            strcp1 = strcp1+name[j];
+        }
+        strcp1 = strcp1+";";
+        previndex = j+1;      
+        std::cout <<"\n";
+        /*
+        for(j=i+1;j<name.length();j++)
+        {
+            std::cout <<name[j];   
+            strcp2 = strcp2+name[j];
+        }  
+        
+        //print first part -> left
+        //std::cout <<strcp1;   
+        int counter = dotCount(strcp1);
+        if(counter==1)
+        {
+            for(j=0;j<strcp1.length();j++)
+            {               
+                
+                if(strcp1[j] !='.' && strcp1[j] !='(' && strcp1[j] != ')' )
+                {
+                    std::cout<<"\n";
+                  
+                    if(strcp1[j] =='-')
+                    {
+                        std::cout <<strcp1[j];   
+                        std::cout <<strcp1[j+1];
+                        j++;
+                    
+                    }
+                    else
+                    {
+                        std::cout <<strcp1[j];   
+                        
+                    }                    
+                }
+            }
+        }
+        */
+        ////print 2nd part -> right
+        //std::cout <<"\n \/  \\" ;
+        //std::cout <<"\n" ;
+        /*        
+        for(j=0;j<strcp2.length();j++)
+        {           
+                
+                
+                if(strcp2[j] !='.' && strcp2[j] !='(' && strcp2[j] != ')' && strcp2[j] != '<' )
+                {
+                    
+                  
+                    if(strcp2[j] =='-')
+                    {
+                        std::cout << strcp2[j];   
+                        std::cout << strcp2[j+1] << "\t";
+                        j++;
+                    
+                    }
+                    else
+                    {
+                        std::cout << strcp2[j] << "\t";   
+                        
+                    }
+                }                
+        }
+        break;
+        */
+      }     
+           
+  }//end of loop 
+  
+  
+    //////
+    std::stringstream sso(covert(strcp1, ';'));
+    std::string temp;
+    while (sso >> temp) {
+        
+    
+       if(temp.length()>4)
+       {
+                std::stringstream sso(covert(temp, '<'));
+                std::string temp1;            
+                i =0;
+                std::cout << '\n' << temp ;
+                std::cout <<"\n \/  \\"<< "\n" ;
+                while (sso >> temp1) {
+                
+                       if(temp1.length()>3)
+                          strcp2 = temp1;
+                        if(i==0)
+                            std::cout << "-" << temp1 << ")" << '\t';
+                        else 
+                            std::cout << temp1;
+                            
+                    i++;
+                
+                }
+                //std::cout<<"\n" <<"tet";
+                if(strcp2.length()>3)
+                {
+                    
+                    std::stringstream sso(covert(strcp2, '.'));
+                    std::string temp2;            
+                    i =0;
+                    //std::cout << '\n' << temp ;
+                    std::cout <<"\n \/  \\"<< "\n" ;
+                    while (sso >> temp2) {
+                                       
+                        if(i==0)
+                            std::cout << "-" << temp2 << '\t';
+                        else 
+                            std::cout <<"-" << temp2;
+                            
+                    i++;
+                
+                    }
+                strcp2="";
+            }
+       }//if end 
+       /////
+        
+    }
+    
+  std::cout <<  "\n";
+  if(name[10] != name[12] )
+  {
+      std::cout <<  "consistent";
+  }
+  else
+  {
+      std::cout << "inconsistent";
+  } 
+        
+}
